@@ -4,338 +4,165 @@
 
 ### Where Entrepreneurs Meet Investors
 
-**A full-stack investment discovery and business networking platform connecting entrepreneurs, investors, and administrators.**
+*A full-stack platform for discovery, recommendations, and investment deal flow*
 
-<p>
-  <strong>Discover Businesses</strong> ·
-  <strong>Smart Recommendations</strong> ·
-  <strong>Investment Bidding</strong> ·
-  <strong>Deal Tracking</strong>
-</p>
+![Django](https://img.shields.io/badge/Django-5.x-092E20?style=for-the-badge&logo=django&logoColor=white)
+![React](https://img.shields.io/badge/React-18.x-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![SQLite](https://img.shields.io/badge/SQLite-3-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
+![DRF](https://img.shields.io/badge/DRF-REST%20API-A30000?style=for-the-badge&logo=django&logoColor=white)
+![JWT](https://img.shields.io/badge/Auth-JWT-black?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 </div>
 
 ---
 
-## 📖 Overview
+## 📖 About
 
-**Business Nexus** is a full-stack platform designed to connect **entrepreneurs seeking investment** with **investors looking for promising business opportunities**.
+**Business Nexus** connects entrepreneurs and investors on a single platform —
+matching business listings to investor interests, handling investment bids
+end-to-end, and giving admins visibility into platform activity. Built as a
+Computer Science capstone project with a production-shaped architecture:
+**Django REST Framework** API on **SQLite**, and a **React** single-page
+frontend talking to it over JWT-authenticated JSON.
 
-The platform provides a complete investment workflow — from business discovery and personalized recommendations to investment bids, bid responses, transactions, and direct communication.
+> *"Fostering collaboration and informed decision-making between entrepreneurs, investors, and businesses."*
 
-Built as a **Computer Science capstone project**, Business Nexus follows a production-oriented architecture using a **React SPA**, **Django REST Framework API**, **JWT authentication**, and **SQLite database**.
+<br>
 
-> 💡 **Vision:** Foster collaboration and informed decision-making between entrepreneurs, investors, and businesses through a centralized digital platform.
+<div align="center">
 
----
+| 🧑‍💼 For Entrepreneurs | 💰 For Investors | 🛡️ For Admins |
+|:---:|:---:|:---:|
+| List & showcase your business | Discover matched opportunities | Monitor all activity |
+| Review & respond to bids | Place investment bids | Verify business credibility |
+| Track funding progress | Manage a personal portfolio | Ensure platform trust |
 
-## ✨ Key Features
-
-### 🔐 Secure Authentication
-
-* JWT-based authentication
-* Access & refresh token workflow
-* Automatic token refresh
-* User registration and login
-* Role-based access control
-
-### 🏢 Business Marketplace
-
-Entrepreneurs can:
-
-* Create business listings
-* Add industries and business tags
-* Specify funding requirements
-* Showcase business opportunities
-* Manage their published businesses
-
-### 🎯 Smart Recommendations
-
-Investors receive personalized business recommendations based on overlapping interests and business tags.
-
-```text
-Recommendation Score
-        ↓
-Investor Interests
-        +
-Business Tags
-        ↓
-Tag Overlap
-        ↓
-Ranked Opportunities
-```
-
-### 💰 Investment Bidding
-
-Investors can:
-
-* Discover investment opportunities
-* Submit investment bids
-* Track submitted bids
-* Monitor bid status
-
-Entrepreneurs can:
-
-* Review incoming bids
-* Accept or reject proposals
-* Track investment activity
-
-### 📊 Transaction Tracking
-
-Accepted investment bids automatically generate transaction records, allowing users to track completed investment activity.
-
-### 💬 Direct Messaging
-
-Built-in messaging allows investors and entrepreneurs to communicate directly through the platform.
-
-### 👥 Role-Based Experience
-
-| Role                   | Capabilities                                                        |
-| ---------------------- | ------------------------------------------------------------------- |
-| 🧑‍💼 **Entrepreneur** | Create businesses, manage listings, review bids                     |
-| 💰 **Investor**        | Discover businesses, receive recommendations, place bids            |
-| 🛡️ **Administrator**  | Manage users, businesses, bids, transactions, and platform activity |
-
-### 🛠️ Django Administration
-
-The Django Admin interface provides centralized back-office management for platform administrators.
+</div>
 
 ---
 
-# 🏗️ System Architecture
+## ✨ Features
 
-```text
-                         BUSINESS NEXUS
-                               │
-              ┌────────────────┴────────────────┐
-              │                                 │
-              ▼                                 ▼
-     ┌──────────────────┐              ┌──────────────────┐
-     │   React Frontend │              │  Django REST API │
-     │                  │   Axios      │                  │
-     │  • Authentication│◄────────────►│  • Authentication│
-     │  • Dashboard     │     JWT      │  • Businesses    │
-     │  • Businesses    │              │  • Recommendations
-     │  • Bids          │              │  • Bids          │
-     │  • Transactions  │              │  • Transactions  │
-     │  • Messaging     │              │  • Messaging     │
-     └────────┬─────────┘              └────────┬─────────┘
-              │                                 │
-              │                                 ▼
-              │                        ┌──────────────────┐
-              │                        │  Django ORM      │
-              │                        └────────┬─────────┘
-              │                                 │
-              │                                 ▼
-              │                        ┌──────────────────┐
-              └───────────────────────►│ SQLite Database  │
-                                       │   db.sqlite3     │
-                                       └──────────────────┘
+- 🔐 **JWT Authentication** — secure register/login with auto-refreshing tokens
+- 🏢 **Business Listings** — entrepreneurs showcase businesses with tags, industry, and funding needs
+- 🎯 **Smart Recommendations** — tag-based matching engine surfaces relevant businesses to each investor
+- 💵 **Investment Bidding** — investors bid, entrepreneurs accept/reject, transactions auto-generate
+- 📊 **Transaction Tracking** — every accepted bid becomes a trackable transaction record
+- 💬 **Direct Messaging** — built-in messaging between users
+- 🧑‍🎨 **Role-Based Experience** — distinct entrepreneur / investor / admin views throughout
+- 🛠️ **Django Admin** — full back-office control out of the box
+
+---
+
+## 🏗️ Architecture
+
 ```
-
-### 🔄 Request Flow
-
-```text
-User
- │
- ▼
-React Application
- │
- │ Axios + JWT
- ▼
-Django REST API
- │
- │ Django ORM
- ▼
-SQLite Database
- │
- ▼
-JSON Response
- │
- ▼
-React UI
+                    ┌─────────────────────┐
+                    │   React Frontend    │
+                    │   (localhost:3000)  │
+                    │                     │
+                    │  Login · Register   │
+                    │  Dashboard          │
+                    │  Businesses         │
+                    │  Bids · Profile     │
+                    └──────────┬──────────┘
+                               │  Axios + JWT
+                               ▼
+                    ┌─────────────────────┐
+                    │  Django REST API    │
+                    │   (localhost:8000)  │
+                    │                     │
+                    │  /api/auth/*        │
+                    │  /api/businesses/   │
+                    │  /api/bids/         │
+                    │  /api/recommend.../ │
+                    └──────────┬──────────┘
+                               │  Django ORM
+                               ▼
+                    ┌─────────────────────┐
+                    │   SQLite Database   │
+                    │     db.sqlite3      │
+                    └─────────────────────┘
 ```
 
 ---
 
-# 📁 Project Structure
+## 📁 Project Structure
 
-```text
+```
 business_nexus/
 │
-├── backend/
-│   │
-│   ├── business_nexus/
-│   │   ├── settings.py
-│   │   ├── urls.py
-│   │   └── ...
-│   │
-│   ├── core/
-│   │   ├── models.py
-│   │   ├── serializers.py
-│   │   ├── views.py
-│   │   ├── urls.py
-│   │   ├── admin.py
-│   │   └── ...
-│   │
-│   ├── db.sqlite3
-│   ├── seed.py
+├── backend/                     🐍 Django + DRF + SQLite
+│   ├── business_nexus/          ⚙️  Project settings & root URLs
+│   ├── core/                    📦 Main app
+│   │   ├── models.py            🗄️  User, Business, Bid, Transaction...
+│   │   ├── serializers.py       🔄 DRF serializers
+│   │   ├── views.py             🎛️  API views & viewsets
+│   │   ├── urls.py              🔗 API routes
+│   │   └── admin.py             🛡️  Django admin config
+│   ├── db.sqlite3               💾 Pre-seeded database
+│   ├── seed.py                  🌱 Demo data script
 │   ├── manage.py
 │   └── requirements.txt
 │
-└── frontend/
-    │
+└── frontend/                    ⚛️  React SPA
     ├── public/
     │   └── index.html
-    │
-    ├── src/
-    │   ├── api/
-    │   │   ├── client.js
-    │   │   └── AuthContext.js
-    │   │
-    │   ├── components/
-    │   │   └── Navbar.js
-    │   │
-    │   └── pages/
-    │       ├── Login.js
-    │       ├── Register.js
-    │       ├── Dashboard.js
-    │       ├── Businesses.js
-    │       ├── BusinessDetail.js
-    │       ├── Bids.js
-    │       ├── Recommendations.js
-    │       └── Profile.js
-    │
-    └── package.json
+    └── src/
+        ├── api/
+        │   ├── client.js         🌐 Axios instance + token refresh
+        │   └── AuthContext.js    🔑 Auth state provider
+        ├── components/
+        │   └── Navbar.js
+        └── pages/
+            ├── Login.js  · Register.js
+            ├── Dashboard.js
+            ├── Businesses.js  · BusinessDetail.js
+            ├── Bids.js
+            ├── Recommendations.js
+            └── Profile.js
 ```
 
 ---
 
-# 🚀 Getting Started
+## 🚀 Quick Start
 
-Follow the steps below to run Business Nexus locally.
-
-## 📋 Prerequisites
-
-Make sure you have installed:
-
-* **Python 3.10+**
-* **Node.js 18+**
-* **npm**
-* **Git**
-
----
-
-## 1️⃣ Clone the Repository
-
-```bash
-git clone <your-repository-url>
-cd business_nexus
-```
-
----
-
-## 2️⃣ Start the Backend
+### 1️⃣ Backend — Django + SQLite
 
 ```bash
 cd backend
-```
-
-### Create a virtual environment
-
-**Windows:**
-
-```bash
 python -m venv venv
-venv\Scripts\activate
-```
+source venv/bin/activate          # Windows → venv\Scripts\activate
 
-**Linux / macOS:**
-
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-### Install dependencies
-
-```bash
 pip install -r requirements.txt
-```
-
-### Apply migrations
-
-```bash
-python manage.py migrate
-```
-
-### Optional: Seed demo data
-
-```bash
-python manage.py shell < seed.py
-```
-
-### Start Django
-
-```bash
+python manage.py migrate          # DB is pre-built, but safe to re-run
 python manage.py runserver
 ```
 
-Backend API:
+> 🟢 API now live at **http://localhost:8000/api/**
 
-```text
-http://localhost:8000/api/
-```
-
-Django Admin:
-
-```text
-http://localhost:8000/admin/
-```
-
----
-
-# ⚛️ 3️⃣ Start the Frontend
-
-Open another terminal:
+### 2️⃣ Frontend — React
 
 ```bash
 cd frontend
-```
-
-Install dependencies:
-
-```bash
 npm install
-```
-
-Start React:
-
-```bash
 npm start
 ```
 
-Frontend:
-
-```text
-http://localhost:3000
-```
+> 🟢 App now live at **http://localhost:3000**
 
 ---
 
-# 🔑 Demo Accounts
+## 🔑 Demo Accounts
 
-The project includes demo accounts for testing the different platform roles.
+| Role | Username | Password | Notes |
+|:---|:---|:---|:---|
+| 🧑‍💼 Entrepreneur | `entre1` | `password123` | Owns *AgriTech Solutions* & *FinPay* |
+| 💰 Investor | `invest1` | `password123` | Interests: `fintech, agritech, iot` |
+| 🛡️ Admin | `admin` | `admin12345` | Full access at `/admin/` |
 
-| Role               | Username  | Password      | Example                     |
-| ------------------ | --------- | ------------- | --------------------------- |
-| 🧑‍💼 Entrepreneur | `entre1`  | `password123` | AgriTech Solutions & FinPay |
-| 💰 Investor        | `invest1` | `password123` | Fintech, Agritech & IoT     |
-| 🛡️ Admin          | `admin`   | `admin12345`  | Full administrative access  |
-
-> ⚠️ **Security Notice:** These credentials are intended only for local development and demonstration. Never use demo credentials in production.
-
-To regenerate demo data:
+Reset or regenerate demo data anytime:
 
 ```bash
 python manage.py shell < seed.py
@@ -343,248 +170,86 @@ python manage.py shell < seed.py
 
 ---
 
-# 🔌 API Reference
+## 🔌 API Reference
 
-Business Nexus exposes a RESTful API through Django REST Framework.
+<details>
+<summary><strong>Click to expand full endpoint list</strong></summary>
 
-| Method             | Endpoint                 | Description                      | Authentication |
-| ------------------ | ------------------------ | -------------------------------- | -------------- |
-| `POST`             | `/api/auth/register/`    | Register a new account           | ❌              |
-| `POST`             | `/api/auth/login/`       | Obtain JWT tokens                | ❌              |
-| `POST`             | `/api/auth/refresh/`     | Refresh access token             | ❌              |
-| `GET/PATCH`        | `/api/me/`               | Get/update current user          | ✅              |
-| `GET/PATCH`        | `/api/investor-profile/` | Manage investor profile          | ✅              |
-| `GET/POST`         | `/api/businesses/`       | List/create businesses           | Mixed          |
-| `GET/PATCH/DELETE` | `/api/businesses/:id/`   | Manage a business                | Mixed          |
-| `GET`              | `/api/recommendations/`  | Get personalized recommendations | ✅              |
-| `GET/POST`         | `/api/bids/`             | View/create investment bids      | ✅              |
-| `POST`             | `/api/bids/:id/respond/` | Accept/reject a bid              | ✅              |
-| `GET`              | `/api/transactions/`     | View investment transactions     | ✅              |
-| `GET/POST`         | `/api/messages/`         | Manage direct messages           | ✅              |
+<br>
 
-### 🔎 Example Queries
+| Method | Endpoint | Description | Auth |
+|:---|:---|:---|:---:|
+| `POST` | `/api/auth/register/` | Create account, returns JWT tokens | ❌ |
+| `POST` | `/api/auth/login/` | Obtain JWT access/refresh tokens | ❌ |
+| `POST` | `/api/auth/refresh/` | Refresh access token | ❌ |
+| `GET / PATCH` | `/api/me/` | Current user profile | ✅ |
+| `GET / PATCH` | `/api/investor-profile/` | Investor interests & range | ✅ |
+| `GET / POST` | `/api/businesses/` | List / create businesses | 🔓 read · ✅ write |
+| `GET / PATCH / DELETE` | `/api/businesses/:id/` | Business detail | 🔓 read · ✅ write |
+| `GET` | `/api/recommendations/` | Tag-matched businesses | ✅ |
+| `GET / POST` | `/api/bids/` | Investment bids | ✅ |
+| `POST` | `/api/bids/:id/respond/` | Accept / reject a bid | ✅ |
+| `GET` | `/api/transactions/` | Transactions from accepted bids | ✅ |
+| `GET / POST` | `/api/messages/` | Direct messaging | ✅ |
 
-Search businesses:
+**Query params:** `businesses/?search=fintech` · `businesses/?industry=Agriculture`
 
-```text
-/api/businesses/?search=fintech
-```
-
-Filter by industry:
-
-```text
-/api/businesses/?industry=Agriculture
-```
-
-Get recommendations:
-
-```text
-/api/recommendations/
-```
+</details>
 
 ---
 
-# 🎯 Recommendation Engine
+## 🎯 Recommendation Engine
 
-Business Nexus currently uses a lightweight and explainable **tag-overlap recommendation algorithm**.
-
-The core scoring logic is:
+The matching logic lives in `RecommendationListView` — a lightweight,
+explainable **tag-overlap scorer**:
 
 ```python
 score = len(investor.interests ∩ business.tags)
 ```
 
-### Example
-
-```text
-Investor Interests:
-fintech, agritech, iot
-
-Business Tags:
-fintech, blockchain, payments
-
-Common Tags:
-fintech
-
-Score:
-1
-```
-
-Businesses with higher overlap scores receive stronger recommendations.
-
-### 🚀 Future Evolution
-
-The recommendation layer has intentionally been kept independent from the frontend API contract, making it possible to replace the current algorithm with:
-
-* Collaborative filtering
-* Content-based recommendation
-* Machine learning models
-* Vector embeddings
-* Semantic similarity
-* Hybrid recommendation systems
-
-without requiring major frontend changes.
+It's intentionally simple so it's easy to swap in a real ML model later
+(collaborative filtering, embeddings, etc.) **without changing the frontend
+contract** — `/api/recommendations/` always returns the same shape.
 
 ---
 
-# 🗄️ Core Data Model
-
-The platform revolves around several key entities:
-
-```text
-User
- │
- ├──────────────► Investor Profile
- │
- └──────────────► Business
-                       │
-                       ▼
-                     Bid
-                       │
-                 ┌─────┴─────┐
-                 ▼           ▼
-              Accepted     Rejected
-                 │
-                 ▼
-             Transaction
-
-User ───────────────► Messages ◄────────────── User
-```
-
-### Main Entities
-
-| Entity                  | Purpose                                         |
-| ----------------------- | ----------------------------------------------- |
-| 👤 **User**             | Authentication and role management              |
-| 🏢 **Business**         | Business opportunities and funding requirements |
-| 💰 **Investor Profile** | Investor interests and investment preferences   |
-| 🤝 **Bid**              | Investment proposal submitted by an investor    |
-| 📊 **Transaction**      | Record created after an accepted bid            |
-| 💬 **Message**          | Direct communication between users              |
-
----
-
-# 🛡️ Security
-
-Business Nexus implements several security-oriented mechanisms:
-
-* JWT authentication
-* Access & refresh token architecture
-* Role-based permissions
-* Django authentication framework
-* DRF permission classes
-* CORS configuration
-* Server-side validation
-* Django ORM for database interaction
-
-> 🔒 Production deployments should additionally use HTTPS, secure environment variables, a production database, restricted CORS origins, secure cookies where applicable, rate limiting, and proper secret management.
-
----
-
-# 🧰 Technology Stack
+## 🛠️ Tech Stack
 
 <div align="center">
 
-| Layer                    | Technology            |
-| ------------------------ | --------------------- |
-| 🎨 **Frontend**          | React 18              |
-| 🧭 **Routing**           | React Router          |
-| 🌐 **HTTP Client**       | Axios                 |
-| ⚙️ **Backend**           | Django 5              |
-| 🔌 **API**               | Django REST Framework |
-| 🔐 **Authentication**    | Simple JWT            |
-| 🗄️ **Database**         | SQLite                |
-| 🔄 **ORM**               | Django ORM            |
-| 🌍 **CORS**              | django-cors-headers   |
-| 🖼️ **Image Processing** | Pillow                |
+| Layer | Technology |
+|:---|:---|
+| **Frontend** | React 18 · React Router · Axios |
+| **Backend** | Django 5 · Django REST Framework |
+| **Auth** | Simple JWT |
+| **Database** | SQLite |
+| **CORS** | django-cors-headers |
+| **Images** | Pillow |
 
 </div>
 
 ---
 
-# 🗺️ Roadmap
+## 🗺️ Roadmap
 
-Business Nexus can be extended into a more complete investment ecosystem.
-
-### 🔜 Planned Features
-
-* [ ] 📄 Pitch deck & business document uploads
-* [ ] 💳 Real payment gateway integration
-* [ ] 🤖 ML-powered recommendation engine
-* [ ] 📊 Advanced admin analytics
-* [ ] 📈 Investor portfolio analytics
-* [ ] 💬 Real-time messaging with WebSockets
-* [ ] 🔔 Real-time notifications
-* [ ] 📧 Email notifications
-* [ ] 🔎 Advanced business discovery & filtering
-* [ ] 🐳 Docker & Docker Compose support
-* [ ] ☁️ Production deployment configuration
-* [ ] 🧪 Automated backend & frontend testing
-* [ ] 📚 Interactive API documentation with Swagger/OpenAPI
+- [ ] File uploads for pitch decks / business documents
+- [ ] Real payment gateway integration for the Investment Exchange module
+- [ ] ML-based recommendation model (beyond tag overlap)
+- [ ] Analytics dashboard for admins (platform-wide trends)
+- [ ] Real-time messaging via WebSockets
+- [ ] Docker Compose for one-command startup
 
 ---
 
-# 📈 Future Vision
+## 📄 License
 
-The long-term goal of **Business Nexus** is to evolve from an academic project into a scalable digital ecosystem for business discovery and investment.
-
-```text
-                BUSINESS NEXUS
-                     │
-        ┌────────────┼────────────┐
-        ▼            ▼            ▼
-   Entrepreneurs  Investors    Administrators
-        │            │            │
-        └────────────┼────────────┘
-                     ▼
-             Business Discovery
-                     │
-                     ▼
-            Smart Recommendations
-                     │
-                     ▼
-              Investment Bids
-                     │
-                     ▼
-                Transactions
-                     │
-                     ▼
-              Long-Term Growth
-```
-
----
-
-# 🎓 Academic Project
-
-**Business Nexus** was developed as a **Computer Science capstone project** demonstrating the practical implementation of:
-
-* Full-stack web development
-* RESTful API design
-* JWT authentication
-* Role-based authorization
-* Database modeling
-* Recommendation systems
-* Investment workflow management
-* React-based SPA development
-* Django backend architecture
-
----
-
-# 📄 License
-
-This project is released under the **MIT License**.
-
-You are free to use, modify, distribute, and extend the project in accordance with the license terms.
-
----
+This project is provided as an academic/starter scaffold under the **MIT License**.
+Feel free to fork, extend, and build on it.
 
 <div align="center">
 
-## 🚀 Built for Entrepreneurs. Powered by Technology.
+---
 
-**Business Nexus**
-*Where Entrepreneurs Meet Investors.*
-
-⭐ If you find this project useful, consider giving it a star!
+**Built for entrepreneurs, investors, and everyone in between.** 🚀
 
 </div>

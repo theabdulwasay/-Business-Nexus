@@ -253,6 +253,7 @@ Feel free to fork, extend, and build on it.
 **Built for entrepreneurs, investors, and everyone in between.** 🚀
 
 </div>
+<img width="673" height="545" alt="image" src="https://github.com/user-attachments/assets/514ae004-9d55-481c-b4a5-7d4580d812b1" />
 <img width="1885" height="831" alt="image" src="https://github.com/user-attachments/assets/55841ef9-40d5-4cd4-aed8-2cca1fb6e912" />
 <img width="1247" height="830" alt="image" src="https://github.com/user-attachments/assets/ff0993df-6e4e-45d6-97b3-fbf4f9899314" />
 
